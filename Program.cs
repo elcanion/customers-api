@@ -56,7 +56,6 @@ app.UseSwaggerUI(c =>
     c.RoutePrefix = string.Empty;
 });
 
-app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
