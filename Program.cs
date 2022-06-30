@@ -4,7 +4,7 @@ using PloomesTest.Data;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("Secrets.json");
+builder.Configuration.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("secrets.json");
 
 var address = builder.Configuration["SQLServerAddress"];
 var initialCatalog = builder.Configuration["SQLServerInitialCatalog"];

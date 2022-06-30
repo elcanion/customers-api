@@ -76,7 +76,6 @@ namespace PloomesTest.Controllers
             //Customer customer = new Customer(name);
             await _context.Customers.AddAsync(customer);
             var state = await _context.SaveChangesAsync();
-            Console.WriteLine("---------statenumber: ", state);
             return Created(new Uri($"{Request.Path}/customer.Id", UriKind.Relative), customer);
         }
 
