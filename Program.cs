@@ -34,7 +34,7 @@ builder.Services.AddControllers();
 builder.Services.AddSqlServer<CustomerDb>(connectionString);
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ploomes API", Description = "Written with C# and integrated to SQL Server", Version = "v1"}); 
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ploomes API", Description = "Written by me, João Victor. I wrote it with C# and integrated it to SQL Server. Reach me on github: https://github.com/elcanion", Version = "v1"}); 
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.XML";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
             

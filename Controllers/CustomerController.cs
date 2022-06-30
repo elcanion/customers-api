@@ -37,7 +37,7 @@ namespace PloomesTest.Controllers
         /// </summary>
         /// <param name="id">Required parameter</param>
         /// <returns>A new customer</returns>
-        /// <response code="200">Returns all customers</response>
+        /// <response code="200">Returns a specific Customer</response>
         /// <response code="400">Customer couldn't be found</response>  
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> Read(int id)
@@ -98,7 +98,9 @@ namespace PloomesTest.Controllers
         /// </remarks>
         /// <returns>A new customer</returns>
         /// <response code="200">Returns all customers</response>
-        /// <response code="400">Customer couldn't find customer</response>  
+        /// <response code="400">Couldn't find customer</response>
+        /// <response code="500">Probably an update error</response> 
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [HttpPut]
         public async Task<ActionResult<List<Customer>>> Update(Customer toUpdate)
         {
