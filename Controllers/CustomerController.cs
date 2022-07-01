@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PloomesTest.Models;
 using PloomesTest.Data;
+using System.Reflection;
 
 namespace PloomesTest.Controllers
 {
@@ -102,9 +103,12 @@ namespace PloomesTest.Controllers
         {
             var customer = await _context.Customers.FindAsync(toUpdate.Id);
             if (customer is null) return BadRequest("Couldn't find customer.");
-            customer.Name = toUpdate.Name;
-            customer.Email = toUpdate.Email;
-            customer.Phone = toUpdate.Phone;
+            
+            foreach (PropertyInfo property in typeof(Customer).GetProperties().Where(prop => prop.CanWrite))
+            {
+                property.SetValue(customer, property.GetValue(toUpdate, null), null);
+            }
+            
             await _context.SaveChangesAsync();
             return Ok(await _context.Customers.ToListAsync());
         }
