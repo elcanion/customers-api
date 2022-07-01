@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PloomesTest.Models;
@@ -73,9 +72,7 @@ namespace PloomesTest.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Customer>>> Create(Customer customer)
         {
-            //Customer customer = new Customer(name);
             await _context.Customers.AddAsync(customer);
-            var state = await _context.SaveChangesAsync();
             return Created(new Uri($"{Request.Path}/customer.Id", UriKind.Relative), customer);
         }
 
